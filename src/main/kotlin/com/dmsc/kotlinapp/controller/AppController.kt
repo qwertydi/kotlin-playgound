@@ -12,12 +12,12 @@ import org.springframework.web.bind.annotation.RestController
 class AppController(private var appService: AppService) {
 
     @GetMapping
-    fun getStuff(): AppResponse {
+    suspend fun getUsers(): AppResponse {
         return appService.listAppUser()
     }
 
     @PostMapping
-    fun createUser(@RequestParam name: String, @RequestParam email: String): AppItem {
+    suspend fun createUser(@RequestParam name: String, @RequestParam email: String): AppItem {
         // Call the service to create and save a new user
         return appService.createUser(name, email)
     }
